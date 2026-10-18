@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Repuestos | ALEXMIN</title>
+
+<style>
+:root {
+    --negro: #101211;
+    --dorado: #e5a928;
+    --gris: #222724;
+    --blanco: #f5f5f5;
+    --gris-claro: #b9bdb9;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: var(--negro);
+    color: var(--blanco);
+    line-height: 1.6;
+}
+
+header {
+    background: rgba(12,14,13,.97);
+    padding: 17px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    border-bottom: 1px solid #42371f;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    color: var(--dorado);
+    font-size: 22px;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 22px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    transition: .3s;
+    font-size: 14px;
+}
+
+nav a:hover {
+    color: var(--dorado);
+}
+
+.hero {
+    min-height: 470px;
+    display: flex;
+    align-items: center;
+    padding: 75px 8%;
+    background:
+        linear-gradient(90deg, #101211f5 5%, #101211c9 60%, #10121155),
+        url('https://images.unsplash.com/photo-1580901368919-7738efb0f87e?auto=format&fit=crop&w=1600&q=85')
+        center/cover;
+}
+
+.hero-content {
+    max-width: 760px;
+}
+
+.etiqueta {
+    color: var(--dorado);
+    letter-spacing: 3px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+h1 {
+    font-size: clamp(35px, 5vw, 60px);
+    line-height: 1.15;
+    margin: 20px 0;
+}
+
+h1 span,
+.titulo span {
+    color: var(--dorado);
+}
+
+.hero p {
+    color: #dedede;
+    line-height: 1.9;
+    margin-bottom: 28px;
+    max-width: 680px;
+}
+
+.btn {
+    display: inline-block;
+    background: var(--dorado);
+    color: #111;
+    text-decoration: none;
+    padding: 13px 22px;
+    font-weight: bold;
+    border: 1px solid var(--dorado);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: .3s;
+    font-size: 13px;
+}
+
+.btn:hover {
+    background: white;
+    border-color: white;
+    transform: translateY(-2px);
+}
+
+.btn-secundario {
+    background: transparent;
+    color: var(--dorado);
+}
+
+section {
+    padding: 70px 8%;
+    scroll-margin-top: 90px;
+}
+
+.titulo {
+    text-align: center;
+    margin-bottom: 38px;
+}
+
+.titulo h2 {
+    font-size: clamp(27px, 4vw, 36px);
+    margin-bottom: 12px;
+}
+
+.titulo p {
+    color: var(--gris-claro);
+    max-width: 700px;
+    margin: auto;
+}
+
+.linea-dorada {
+    width: 65px;
+    height: 4px;
+    background: var(--dorado);
+    margin: 17px auto;
+    border-radius: 5px;
+}
+
+/* BUSCADOR */
+.buscador {
+    max-width: 580px;
+    margin: 0 auto 35px;
+}
+
+.buscador input {
+    width: 100%;
+    padding: 15px 18px;
+    background: #1b1f1c;
+    color: white;
+    border: 1px solid #454b46;
+    border-radius: 7px;
+    outline: none;
+    font-size: 15px;
+}
+
+.buscador input:focus {
+    border-color: var(--dorado);
+}
+
+.resultados {
+    color: #aaa;
+    text-align: center;
+    margin-top: 12px;
+    font-size: 13px;
+}
+
+/* CATÁLOGO */
+.catalogo {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(225px, 1fr));
+    gap: 25px;
+}
+
+.producto {
+    background: linear-gradient(145deg, #252a26, #191c1a);
+    border: 1px solid #363c37;
+    border-radius: 11px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: .3s;
+}
+
+.producto:hover {
+    transform: translateY(-6px);
+    border-color: var(--dorado);
+    box-shadow: 0 12px 30px #0006;
+}
+
+.producto-imagen {
+    height: 210px;
+    background: #171a18;
+    overflow: hidden;
+    position: relative;
+}
+
+.producto-imagen img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 10px;
+    transition: transform .4s;
+}
+
+.producto:hover .producto-imagen img {
+    transform: scale(1.06);
+}
+
+.numero {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: var(--dorado);
+    color: #111;
+    padding: 4px 9px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.producto-info {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.producto h3 {
+    font-size: 16px;
+    color: white;
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+
+.producto-info p {
+    color: #aeb3af;
+    font-size: 13px;
+    margin-bottom: 18px;
+    flex: 1;
+}
+
+.btn-producto {
+    display: block;
+    text-align: center;
+    width: 100%;
+    margin-top: auto;
+}
+
+/* DETALLE */
+#detalle {
+    display: none;
+    margin-top: 45px;
+    padding: 30px;
+    background: #1b1f1c;
+    border: 1px solid var(--dorado);
+    border-radius: 12px;
+    scroll-margin-top: 100px;
+}
+
+.detalle-contenido {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: center;
+    gap: 35px;
+}
+
+.detalle-foto {
+    background: #101211;
+    border-radius: 10px;
+    min-height: 280px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#detalle-imagen {
+    width: 100%;
+    max-height: 400px;
+    object-fit: contain;
+    padding: 15px;
+}
+
+#detalle h3 {
+    color: var(--dorado);
+    font-size: clamp(24px, 3vw, 32px);
+    margin: 10px 0 18px;
+}
+
+#detalle-descripcion,
+#detalle-aplicaciones {
+    color: #d2d5d2;
+    margin: 12px 0;
+}
+
+.acciones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.acciones button {
+    font-family: inherit;
+}
+
+#sin-resultados {
+    display: none;
+    text-align: center;
+    padding: 30px;
+    color: #bbb;
+}
+
+/* SERVICIOS */
+.servicios {
+    background: #181b19;
+}
+
+.servicios-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 22px;
+}
+
+.servicio {
+    padding: 28px 22px;
+    background: var(--gris);
+    border: 1px solid #383e39;
+    border-radius: 10px;
+    text-align: center;
+    transition: .3s;
+}
+
+.servicio:hover {
+    border-color: var(--dorado);
+    transform: translateY(-4px);
+}
+
+.servicio-icono {
+    font-size: 32px;
+    margin-bottom: 12px;
+}
+
+.servicio h3 {
+    color: var(--dorado);
+    margin-bottom: 10px;
+}
+
+.servicio p {
+    color: #bbb;
+    font-size: 14px;
+}
+
+/* CONTACTO */
+.contacto {
+    text-align: center;
+    background:
+        linear-gradient(#101211eb, #101211f5),
+        url('https://images.unsplash.com/photo-1516937941344-00b4e0337589?auto=format&fit=crop&w=1400&q=80')
+        center/cover;
+}
+
+.contacto p {
+    color: #ccc;
+    margin: 12px auto 25px;
+    max-width: 650px;
+}
+
+.contacto-botones {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+footer {
+    text-align: center;
+    padding: 28px 15px;
+    color: #999;
+    background: #080908;
+    border-top: 1px solid #302a1d;
+    font-size: 13px;
+}
+
+footer span {
+    color: var(--dorado);
+}
+
+@media (max-width: 650px) {
+    header {
+        justify-content: center;
+        padding: 16px 5%;
+    }
+
+    nav {
+        justify-content: center;
+        gap: 14px;
+    }
+
+    .hero {
+        min-height: 430px;
+        padding: 55px 6%;
+    }
+
+    section {
+        padding: 50px 6%;
+    }
+
+    .catalogo {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .producto-imagen {
+        height: 145px;
+    }
+
+    .producto-info {
+        padding: 12px;
+    }
+
+    .producto h3 {
+        font-size: 13px;
+    }
+
+    .producto-info p {
+        font-size: 12px;
+    }
+
+    .btn-producto {
+        font-size: 11px;
+        padding: 11px 7px;
+    }
+
+    #detalle {
+        padding: 18px;
+    }
+
+    .detalle-contenido {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .detalle-foto {
+        min-height: 220px;
+    }
+
+    .acciones {
+        flex-direction: column;
+    }
+
+    .acciones .btn {
+        text-align: center;
+    }
+}
+
+@media (max-width: 360px) {
+    .catalogo {
+        grid-template-columns: 1fr;
+    }
+
+    .producto-imagen {
+        height: 220px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">⛏ ALEXMIN</div>
+
+    <nav>
+        <a href="index.html">Inicio</a>
+        <a href="#catalogo">Repuestos</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#contacto">Contacto</a>
+    </nav>
+</header>
+
+<!-- PORTADA -->
+<section class="hero">
+    <div class="hero-content">
+        <span class="etiqueta">SOLUCIONES PARA LA INDUSTRIA MINERA</span>
+
+        <h1>Repuestos y accesorios para <span>minería</span></h1>
+
+        <p>
+            En ALEXMIN ofrecemos repuestos y accesorios para equipos de
+            perforación, conexiones, herramientas y seguridad minera.
+            Encuentra los componentes que necesitas para tus operaciones.
+            Consulta con nuestro equipo la disponibilidad y compatibilidad
+            de cada producto.
+        </p>
+
+        <a href="#catalogo" class="btn">EXPLORAR CATÁLOGO ↓</a>
+        <a href="#contacto" class="btn btn-secundario"
+           style="margin-left:8px;">CONTÁCTANOS</a>
+    </div>
+</section>
+
+<!-- CATÁLOGO -->
+<section id="catalogo">
+    <div class="titulo">
+        <span class="etiqueta">NUESTROS PRODUCTOS</span>
+        <h2>Catálogo de <span>repuestos</span></h2>
+        <div class="linea-dorada"></div>
+        <p>
+            Selecciona un producto para conocer más detalles y consultar
+            directamente por WhatsApp.
+        </p>
+    </div>
+
+    <div class="buscador">
+        <input
+            type="search"
+            id="buscar"
+            placeholder="⌕ Buscar repuestos, brocas, filtros..."
+            aria-label="Buscar repuestos"
+        >
+        <div class="resultados" id="contador"></div>
+    </div>
+
+    <div class="catalogo" id="lista-productos"></div>
+
+    <div id="sin-resultados">
+        No encontramos productos con ese nombre. Intenta otra búsqueda.
+    </div>
+
+    <!-- DETALLE DEL PRODUCTO -->
+    <div id="detalle">
+        <div class="detalle-contenido">
+            <div class="detalle-foto">
+                <img id="detalle-imagen" src="" alt="">
+            </div>
+
+            <div>
+                <span class="etiqueta">INFORMACIÓN DEL PRODUCTO</span>
+                <h3 id="detalle-titulo"></h3>
+                <p id="detalle-descripcion"></p>
+                <p id="detalle-aplicaciones"></p>
+
+                <div class="acciones">
+                    <a id="consulta" class="btn" href="#" target="_blank"
+                       rel="noopener">
+                        CONSULTAR POR WHATSAPP →
+                    </a>
+
+                    <button class="btn btn-secundario"
+                            onclick="cerrarDetalle()">
+                        ← VOLVER AL CATÁLOGO
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- CONTACTO -->
+<section id="contacto" class="contacto">
+    <span class="etiqueta">ESTAMOS PARA AYUDARTE</span>
+    <h2>¿Buscas un <span>repuesto?</span></h2>
+
+    <div class="linea-dorada"></div>
+
+    <p>
+        Escríbenos para consultar precios, disponibilidad y compatibilidad.
+        Nuestro equipo te ayudará a encontrar la opción adecuada.
+    </p>
+    <div class="contacto-botones">
+        <a id="whatsapp-general" class="btn" href="#" target="_blank"
+           rel="noopener">CONSULTAR POR WHATSAPP</a>
+
+        <a class="btn btn-secundario" href="index.html">
+            ← VOLVER AL INICIO
+        </a>
+    </div>
+</section>
+
+<footer>
+    © 2026 <span>ALEXMIN</span> | Repuestos, accesorios y soluciones para minería.
+</footer>
+
+<script>
+const WHATSAPP = "59175999085";
+
+const productos = [
+    {
+        nombre: "ABRAZADERA DE TORNILLO GRANDE",
+        imagen: "abrazadera pequeño.jpeg",
+    },
+    {
+        nombre: "ABRAZADERA DE TORNILLO MEDIANO",
+        imagen: "abrazadera mediano.jpeg",
+    },
+    {
+        nombre: "ABRAZADERA DE TORNILLO PEQUEÑO",
+        imagen: "Abrazadera tronillo pequeño.jpeg",
+    },
+    {
+        nombre: "ABRAZADERA Nº29",
+        imagen: "abrazadera 29.jpeg",
+    },
+    {
+        nombre: "ABRAZADERA Nº34",
+        imagen: "abrazadera 34.jpeg",
+    },
+    {
+        nombre: "ABRAZADERA Nº40",
+        imagen: "Abrazadera 40.jpeg",
+    },
+    {
+        nombre: "ACOPLE 3/4 YT27",
+        imagen: "acople yt27.jpeg",
+    },
+    {
+        nombre: "ACOPLE DE ROSCA 3/4 PULG",
+        imagen: "acople de rosca.jpeg",
+    },
+    {
+        nombre: "ACOPLE LINEAL DE MANGUERA 1/2 PULG",
+        imagen: "acople lineal de maquera.jpeg",
+    },
+    {
+        nombre: "ACOPLE LINEAL DE MANGUERA 1/2 PULG CON ROSCA",
+        imagen: "acople de manguera con rosca.jpeg",
+    },
+    {
+        nombre: "AGUJA YT27",
+        imagen: "aguja yt27.jpeg",
+    },
+    {
+        nombre: "ALETAS YT27",
+        imagen: "aletas-yt27.jpeg",
+    },
+    {
+        nombre: "ARANDELA YT27",
+        imagen: "arandela yt27.jpeg",
+    },
+    {
+        nombre: "BATEA PARA LAVADO DE ORO",
+        imagen: "batea para lavado.jpeg",
+    },
+    {
+        nombre: "BROCA ACHA Nº41",
+        imagen: "Broca acha 41.jpeg",
+    },
+    {
+        nombre: "BROCA CHIRIMOYA Nº36",
+        imagen: "broca chirimoya 36.jpeg",
+    },
+    {
+        nombre: "BROCA CHIRIMOYA Nº38",
+        imagen: "broca chirimoya 38.jpeg",
+    },
+    {
+        nombre: "BROCA CHIRIMOYA Nº38 NEGRA",
+        imagen: "broca chirimoya negro.jpeg",
+    },
+    {
+        nombre: "BROCA GUSANO PARA ROTOMARTILLO",
+        imagen: "broca gusano.jpeg",
+    },
+    {
+        nombre: "BRONCE GRANDE YT27",
+        imagen: "bronce grande.jpeg",
+    },
+    {
+        nombre: "BRONCE PEQUEÑO YT27",
+        imagen: "bronce pequeño.jpeg",
+    },
+    {
+        nombre: "BUJE DE BARRENO YT27",
+        imagen: "buje de barreno.jpeg",
+    },
+    {
+        nombre: "CAJA DE TRINQUETE YT27",
+        imagen: "caja de trianquete.jpeg",
+    },
+    {
+        nombre: "CAPUCHÓN DE RESPIRADOR",
+        imagen: "capuchon de respiracion.jpeg",
+    },
+    {
+        nombre: "CARGADOR DE ANFO GALVANIZADO",
+        imagen: "cargador de anfo.jpeg",
+    },
+    {
+        nombre: "CASCO",
+        imagen: "casco.jpeg",
+    },
+    {
+        nombre: "CASCO CROSS",
+        imagen: "",
+    },
+    {
+        nombre: "CASCO DE FIBRA",
+        imagen: "",
+    },
+    {
+        nombre: "CRISOL DE FUNDICIÓN DE ORO GRANDE",
+        imagen: "crisol grande.jpeg",
+    },
+    {
+        nombre: "CRISOL DE FUNDICIÓN DE ORO PEQUEÑO",
+        imagen: "crisol pequeño.jpeg",
+    },
+    {
+        nombre: "DISTRIBUIDOR DE AIRE YT27",
+        imagen: "distribuidor de aire.jpeg",
+    },
+    {
+        nombre: "EMPAQUE DE GARRA DE ACOPLE",
+        imagen: "empaque de garra.jpeg",
+    },
+    {
+        nombre: "FANEL CTD",
+        imagen: "",
+    },
+    {
+        nombre: "FILTRO DE COMPRESORA",
+        imagen: "filtro de compresora.jpeg",
+    },
+    {
+        nombre: "FILTRO DE GAS",
+        imagen: "filtro de gas.jpeg",
+    },
+    {
+        nombre: "FILTRO DE MASCARILLA ROSA",
+        imagen: "filtro de gas.jpeg",
+    },
+    {
+        nombre: "FILTRO CUADRADO DE PULMOSAN",
+        imagen: "filtros cuadrados.jpeg",
+    },
+    {
+        nombre: "GARRA CANUTO 1 PULG",
+        imagen: "garra canuto 1pulg.jpeg",
+    },
+    {
+        nombre: "GARRA CANUTO 1/2 PULG",
+        imagen: "garra canuto 1.2 pulg.jpeg",
+    },
+    {
+        nombre: "GARRA CANUTO 3/4 PULG",
+        imagen: " garra canuto 3.4.jpeg",
+    },
+    {
+        nombre: "GARRA ROSCA 3/4 PULG",
+        imagen: "garra rosca 3.4.jpeg",
+    },
+    {
+        nombre: "GATILLO DE PISTÓN DE AVANCE YT27",
+        imagen: "gatillo de piston de avance.jpeg",
+    },
+    {
+        nombre: "KIT DE REPUESTOS YT27",
+        imagen: "kit de repuestos yt27.jpeg",
+    },
+    {
+        nombre: "KIT DE RETENES DE PISTÓN YT27",
+        imagen: "kit de retenes de piston.jpeg",
+    },
+    {
+        nombre: "KIT DE RETENES YT27",
+        imagen: "kit de retenes.jpeg",
+    },
+    {
+        nombre: "LÁMPARA JYM",
+        imagen: "lampara jym.jpeg",
+    },
+    {
+        nombre: "LÁMPARA MINERA 9025",
+        imagen: "lampara 9025.jpeg",
+    },
+    {
+        nombre: "LÁMPARA MINERA 9070",
+        imagen: "lampara 9070.jpeg",
+    },
+    {
+        nombre: " LENGUETA DE TRABABARRENO",
+        imagen: "lengueta de trababarreno.jpeg",
+    },
+    {
+        nombre: " LENTES DE PERFORACION",
+        imagen: "lentes de perforacion.jpeg",
+    },
+    {
+        nombre: " LENTES DE SEGURIDAD",
+        imagen: "lentes de seguridad.jpeg",
+    },
+    {
+        nombre: " LUBRICADOR BOTELLON DE YT27",
+        imagen: "lubricador botellon.jpeg",
+    },
+    {
+        nombre: " LUBRICADOR DE ARRASTRE",
+        imagen: "lubricador de arrastre.jpeg",
+    },
+    {
+        nombre: " MANGUERA NEGRA  1PULG",
+        imagen: "",
+    },
+     {
+        nombre: " MANIJAS",
+        imagen: "MANIJAS.jpeg",
+    },
+     {
+        nombre: " MINI KIT DE RESORTES YT27",
+        imagen: "mini kit de resortes.jpeg",
+    },
+     {
+        nombre: " MOLDE DE FUNDICION DE ORO ",
+        imagen: "molde de fundicion de oro.jpeg",
+    },
+     {
+        nombre: "PERNO DE TRABABARRENO YT27",
+        imagen: "perno de trababarreno.jpeg",
+    },
+    {
+        nombre: " PERNO TIRANTE DEL YT27",
+        imagen: "perno tirante.jpeg",
+    },
+    {
+        nombre: " PULMOSAN MASCARA DE AIRE",
+        imagen: "PULMOSAN DE AIRE.jpeg",
+    },
+    {
+        nombre: "PUÑO DE MANIJA",
+        imagen: "PUÑO DE MANIJA.jpeg",
+    },
+    {
+        nombre: "RESORTE CONICOS",
+        imagen: "RESORTES CONICOS.jpeg",
+    },
+    {
+        nombre: "RETEN DE COMPRESOR",
+        imagen: "RETEN DE COMPRESOR.jpeg",
+    },
+    {
+        nombre: "RIOBUSTER-BOMBA SISMICA",
+        imagen: "RIOBUSTERBOMBA.jpeg",
+    },
+    {
+        nombre: "TAFILETE O ARNEZ DE CASCO",
+        imagen: "ARNES DE CASCO.jpeg",
+    },
+    {
+        nombre: "TAPON DE AIRE YT27",
+        imagen: "TAPON DE AIRE.jpeg",
+    },
+    {
+        nombre: "TAPON DE LUBRICADOR YT27",
+        imagen: "TAPON DE LUBRICADOR.jpeg",
+    },
+    {
+        nombre: "T-DISTRIBUIDOR DE AIRE",
+        imagen: "T DISTRIBUIDOR DE AIRE.jpeg",
+    },
+    {
+        nombre: "TESADORA DE CORREA",
+        imagen: "tesadora.jpeg",
+    },
+    {
+        nombre: "VALVULA DE PASO 3/4",
+        imagen: "valvula de paso.jpeg",
+    },
+    {
+        nombre: "VALVULA DE AGUA DE COBRE",
+        imagen: "valvula de agua.jpeg",
+    },
+    {
+        nombre: "VINTURI DE CARGADOR DE ANFO",
+        imagen: "venturi de cargador.jpeg",
+    },
+];
+
+const lista = document.getElementById("lista-productos");
+const buscador = document.getElementById("buscar");
+const contador = document.getElementById("contador");
+
+function enlaceWhatsApp(mensaje) {
+    return "https://wa.me/" + WHATSAPP +
+        "?text=" + encodeURIComponent(mensaje);
+}
+
+function renderizarProductos(filtro = "") {
+    const termino = filtro.trim().toLocaleLowerCase("es");
+
+    const filtrados = productos
+        .map((producto, indice) => ({...producto, indice}))
+        .filter(producto =>
+            producto.nombre.toLocaleLowerCase("es").includes(termino)
+        );
+
+    lista.innerHTML = "";
+
+    filtrados.forEach(producto => {
+        const tarjeta = document.createElement("article");
+        tarjeta.className = "producto";
+
+        const zonaImagen = document.createElement("div");
+        zonaImagen.className = "producto-imagen";
+
+        const img = document.createElement("img");
+        img.alt = producto.nombre;
+        img.loading = "lazy";
+
+        if (producto.imagen) {
+            img.src = producto.imagen;
+
+            img.onerror = function() {
+                this.style.display = "none";
+                zonaImagen.style.background =
+                    "linear-gradient(145deg,#292e29,#111)";
+            };
+        } else {
+            img.style.display = "none";
+            zonaImagen.style.background =
+                "linear-gradient(145deg,#292e29,#111)";
+        }
+
+        zonaImagen.appendChild(img);
+
+        const info = document.createElement("div");
+        info.className = "producto-info";
+
+        const nombre = document.createElement("h3");
+        nombre.textContent = producto.nombre;
+
+        info.appendChild(nombre);
+
+        tarjeta.appendChild(zonaImagen);
+        tarjeta.appendChild(info);
+
+        lista.appendChild(tarjeta);
+    });
+
+    contador.textContent =
+        filtrados.length + (
+            filtrados.length === 1
+                ? " producto encontrado"
+                : " productos encontrados"
+        );
+
+    document.getElementById("sin-resultados").style.display =
+        filtrados.length ? "none" : "block";
+}
+
+function mostrarEquipo(indice) {
+    const equipo = productos[indice];
+
+    if (!equipo) return;
+
+    document.getElementById("detalle-titulo").textContent =
+        equipo.nombre;
+
+    const imagen = document.getElementById("detalle-imagen");
+    imagen.style.display = equipo.imagen ? "block" : "none";
+    imagen.src = equipo.imagen || "";
+    imagen.alt = equipo.nombre;
+
+    imagen.onerror = function() {
+        this.style.display = "none";
+    };
+
+    document.getElementById("detalle-descripcion").textContent =
+        equipo.descripcion;
+
+    document.getElementById("detalle-aplicaciones").textContent =
+        equipo.aplicaciones;
+
+    document.getElementById("consulta").href = enlaceWhatsApp(
+        "Hola, ALEXMIN. Quisiera consultar por este repuesto: " +
+        equipo.nombre + ". ¿Podrían indicarme el precio y disponibilidad?"
+    );
+
+    const detalle = document.getElementById("detalle");
+    detalle.style.display = "block";
+
+    detalle.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+}
+
+function cerrarDetalle() {
+    document.getElementById("detalle").style.display = "none";
+
+    document.getElementById("catalogo").scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+}
+
+buscador.addEventListener("input", function() {
+    renderizarProductos(this.value);
+});
+
+document.getElementById("whatsapp-general").href =
+    enlaceWhatsApp(
+        "Hola, ALEXMIN. Quisiera información sobre sus repuestos mineros."
+    );
+
+renderizarProductos();
+</script>
+
+</body>
+</html>

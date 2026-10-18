@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Barrenos Mineros | ALEXMIN</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+:root {
+    --negro: #101211;
+    --dorado: #e5a928;
+    --gris: #222724;
+    --blanco: #f5f5f5;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: var(--negro);
+    color: var(--blanco);
+}
+
+/* BARRA DE NAVEGACIÓN */
+header {
+    background: rgba(12, 14, 13, 0.97);
+    padding: 18px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    border-bottom: 1px solid #42371f;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    color: var(--dorado);
+    font-size: 23px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 22px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    transition: .3s;
+}
+
+nav a:hover {
+    color: var(--dorado);
+}
+
+/* PORTADA */
+.hero {
+    min-height: 470px;
+    display: flex;
+    align-items: center;
+    padding: 75px 8%;
+    background:
+        linear-gradient(90deg, #101211f5 10%, #101211a8 70%, #10121155),
+        url('https://images.unsplash.com/photo-1580901368919-7738efb0f87e?auto=format&fit=crop&w=1800&q=85')
+        center/cover no-repeat;
+}
+
+.hero-content {
+    max-width: 720px;
+}
+
+.etiqueta {
+    color: var(--dorado);
+    letter-spacing: 3px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+h1 {
+    font-size: clamp(38px, 6vw, 65px);
+    margin: 20px 0;
+    line-height: 1.1;
+}
+
+h1 span,
+.titulo span {
+    color: var(--dorado);
+}
+
+.hero p {
+    color: #ddd;
+    line-height: 1.8;
+    margin-bottom: 28px;
+    max-width: 620px;
+}
+
+/* BOTONES */
+.btn {
+    display: inline-block;
+    background: var(--dorado);
+    color: #111;
+    text-decoration: none;
+    padding: 14px 23px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: .3s;
+    font-size: 14px;
+}
+
+.btn:hover {
+    background: white;
+    transform: translateY(-3px);
+}
+
+.btn-secundario {
+    background: transparent;
+    color: var(--dorado);
+    border: 1px solid var(--dorado);
+}
+
+.btn-secundario:hover {
+    background: var(--dorado);
+    color: #111;
+}
+
+/* SECCIONES */
+section {
+    padding: 70px 8%;
+    scroll-margin-top: 90px;
+}
+
+.titulo {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.titulo h2 {
+    font-size: clamp(28px, 4vw, 38px);
+    margin-bottom: 14px;
+}
+
+.titulo p {
+    color: #aaa;
+    line-height: 1.8;
+    max-width: 720px;
+    margin: auto;
+}
+
+/* CATÁLOGO */
+.catalogo {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(245px, 1fr));
+    gap: 25px;
+}
+
+.producto {
+    background: var(--gris);
+    border: 1px solid #383e39;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: .3s;
+    display: flex;
+    flex-direction: column;
+}
+
+.producto:hover {
+    transform: translateY(-7px);
+    border-color: var(--dorado);
+    box-shadow: 0 12px 30px #0008;
+}
+
+.producto img {
+    display: block;
+    width: 100%;
+    height: 215px;
+    object-fit: contain;
+    background: #171a18;
+}
+
+.producto-info {
+    padding: 23px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex: 1;
+}
+
+.etiqueta-producto {
+    color: var(--dorado);
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+    margin-bottom: 12px;
+}
+
+.producto h3 {
+    color: white;
+    font-size: 19px;
+    line-height: 1.5;
+    margin-bottom: 12px;
+}
+
+.producto p {
+    color: #c7c7c7;
+    font-size: 14px;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+.producto .btn {
+    margin-top: auto;
+}
+
+/* DETALLE DEL BARRENO */
+#detalle {
+    display: none;
+    margin-top: 35px;
+    padding: 30px;
+    background: var(--gris);
+    border: 1px solid var(--dorado);
+    border-radius: 12px;
+}
+
+.detalle-contenido {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+    gap: 30px;
+    align-items: center;
+}
+
+#detalle-imagen {
+    width: 100%;
+    max-height: 380px;
+    object-fit: cover;
+    border-radius: 9px;
+    background: #171a18;
+}
+
+#detalle h3 {
+    color: var(--dorado);
+    font-size: 28px;
+    line-height: 1.4;
+    margin-bottom: 18px;
+}
+
+#detalle p {
+    color: #ddd;
+    line-height: 1.9;
+    margin-bottom: 14px;
+}
+
+.acciones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 22px;
+}
+
+/* SERVICIOS */
+.servicios {
+    background: #171a18;
+}
+
+.servicios-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 22px;
+}
+
+.servicio {
+    padding: 28px 22px;
+    background: var(--gris);
+    border: 1px solid #383e39;
+    border-radius: 10px;
+    text-align: center;
+    transition: .3s;
+}
+
+.servicio:hover {
+    border-color: var(--dorado);
+    transform: translateY(-5px);
+}
+
+.servicio .icono {
+    font-size: 35px;
+    margin-bottom: 15px;
+}
+
+.servicio h3 {
+    color: var(--dorado);
+    margin-bottom: 12px;
+}
+
+.servicio p {
+    color: #ccc;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+/* CONTACTO */
+.contacto {
+    text-align: center;
+    background: linear-gradient(135deg, #292317, #101211);
+}
+
+.contacto .titulo {
+    margin-bottom: 25px;
+}
+
+.contacto p {
+    color: #ddd;
+    line-height: 1.9;
+    margin: 12px auto;
+}
+
+.boton-whatsapp {
+    display: inline-block;
+    background: #25D366;
+    color: white;
+    padding: 15px 25px;
+    margin-top: 15px;
+    border-radius: 7px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: .3s;
+}
+
+.boton-whatsapp:hover {
+    background: #128C7E;
+    transform: translateY(-3px);
+}
+
+/* WHATSAPP FLOTANTE */
+.whatsapp-flotante {
+    position: fixed;
+    bottom: 23px;
+    right: 23px;
+    width: 58px;
+    height: 58px;
+    background: #25D366;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    font-size: 30px;
+    box-shadow: 0 4px 15px #0008;
+    z-index: 999;
+    transition: .3s;
+}
+
+.whatsapp-flotante:hover {
+    background: #128C7E;
+    transform: scale(1.1);
+}
+
+/* PIE DE PÁGINA */
+footer {
+    text-align: center;
+    padding: 28px 15px;
+    color: #aaa;
+    background: #080908;
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+footer span {
+    color: var(--dorado);
+}
+
+/* CELULARES Y TABLETS */
+@media (max-width: 700px) {
+    header {
+        justify-content: center;
+        padding: 17px 5%;
+    }
+
+    .logo {
+        font-size: 20px;
+        text-align: center;
+    }
+
+    nav {
+        justify-content: center;
+        gap: 15px;
+    }
+
+    nav a {
+        font-size: 14px;
+    }
+
+    .hero {
+        min-height: 420px;
+        padding: 60px 6%;
+        background-position: center;
+    }
+
+    section {
+        padding: 55px 6%;
+    }
+
+    .catalogo {
+        grid-template-columns: 1fr;
+    }
+
+    .producto img {
+        height: 230px;
+    }
+
+    .detalle-contenido {
+        grid-template-columns: 1fr;
+    }
+
+    #detalle {
+        padding: 20px;
+    }
+
+    #detalle h3 {
+        font-size: 24px;
+    }
+
+    .whatsapp-flotante {
+        width: 53px;
+        height: 53px;
+        right: 15px;
+        bottom: 15px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ENCABEZADO -->
+<header>
+    <div class="logo">⛏ EMPRESA ALEXMIN</div>
+
+    <nav>
+        <a href="index.html">Inicio</a>
+        <a href="#catalogo">Barrenos</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#contacto">Contacto</a>
+    </nav>
+</header>
+
+<!-- PORTADA -->
+<section class="hero">
+    <div class="hero-content">
+        <span class="etiqueta">SOLUCIONES PARA LA MINERÍA</span>
+
+        <h1>Barrenos <span>Mineros</span></h1>
+
+        <p>
+            Herramientas esenciales para la perforación de roca.
+            En ALEXMIN ofrecemos barrenos cónicos y diamantados
+            en diferentes longitudes, para ayudarte a encontrar
+            la opción adecuada según tu equipo y las exigencias
+            de tu operación minera.
+        </p>
+
+        <a href="#catalogo" class="btn">
+            EXPLORAR CATÁLOGO ↓
+        </a>
+    </div>
+</section>
+
+<!-- CATÁLOGO -->
+<section id="catalogo">
+
+    <div class="titulo">
+        <h2>Nuestros <span>Barrenos</span></h2>
+        <p>
+            Conoce las opciones disponibles y contáctanos
+            para consultar precios, existencias y compatibilidad.
+        </p>
+    </div>
+
+    <div class="catalogo">
+
+        <article class="producto">
+            <img
+                src="barreno conico 0.60.jpeg"
+                alt="Equipo de perforación minera"
+                loading="lazy">
+
+            <div class="producto-info">
+                <span class="etiqueta-producto">TIPO CÓNICO</span>
+                <h3>Barreno Brasilero 0,60 m</h3>
+                <p>
+                    Opción de menor longitud para trabajos de
+                    perforación que requieren herramientas compactas.
+                </p>
+            </div>
+        </article>
+
+        <article class="producto">
+            <img
+                src="barreno conico 0.80.jpeg"
+                alt="Maquinaria para trabajos mineros"
+                loading="lazy">
+
+            <div class="producto-info">
+                <span class="etiqueta-producto">TIPO CÓNICO</span>
+                <h3>Barreno Brasilero 0,80 m</h3>
+                <p>
+                    Alternativa para trabajos de perforación minera.
+                    La selección depende del equipo y la aplicación.
+                </p>
+            </div>
+        </article>
+
+        <article class="producto">
+            <img
+                src=" "
+                alt="Trabajo de perforación"
+                loading="lazy">
+
+            <div class="producto-info">
+                <span class="etiqueta-producto">TIPO CÓNICO</span>
+                <h3>Barreno Brasilero 1,20 m</h3>
+                <p>
+                    Longitud para aplicaciones de perforación
+                    que requieren mayor alcance de herramienta.
+                </p>
+            </div>
+        </article>
+
+        <article class="producto">
+            <img
+                src=" "
+                alt="Equipo industrial de minería"
+                loading="lazy">
+
+            <div class="producto-info">
+                <span class="etiqueta-producto">TIPO CÓNICO</span>
+                <h3>Barreno Brasilero 1,80 m</h3>
+                <p>
+                    Opción de mayor longitud. Consulta las
+                    especificaciones para confirmar su aplicación.
+                </p>
+            </div>
+        </article>
+
+        <article class="producto">
+            <img
+                src=" "
+                alt="Herramientas y equipos técnicos"
+                loading="lazy">
+
+            <div class="producto-info">
+                <span class="etiqueta-producto">TIPO DIAMANTADO</span>
+                <h3>Barreno Brasilero 0,80 m</h3>
+                <p>
+                    Herramienta para aplicaciones de perforación
+                    que requieren el sistema diamantado compatible.
+                </p>
+            </div>
+        </article>
+
+        <article class="producto">
+            <img
+                src="barreno 1.20 diamantado.jpeg"
+                alt="Trabajo técnico con equipos industriales"
+                loading="lazy">
+
+            <div class="producto-info">
+                <span class="etiqueta-producto">TIPO DIAMANTADO</span>
+                <h3>Barreno Brasilero 1,20 m</h3>
+                <p>
+                    Alternativa de mayor longitud para operaciones
+                    que utilizan herramientas diamantadas compatibles.
+                </p>
+            </div>
+        </article>
+
+    </div>
+
+    <!-- DETALLE DINÁMICO -->
+    <div id="detalle">
+        <div class="detalle-contenido">
+
+            <div>
+                <img id="detalle-imagen"
+                     src=""
+                     alt="Detalle del barreno seleccionado">
+            </div>
+
+            <div>
+                <span class="etiqueta">INFORMACIÓN DEL PRODUCTO</span>
+
+                <h3 id="detalle-titulo"></h3>
+
+                <p id="detalle-descripcion"></p>
+
+                <p id="detalle-aplicaciones"></p>
+
+                <div class="acciones">
+                    <a id="consulta"
+                       class="btn"
+                       href="#contacto"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        CONSULTAR POR WHATSAPP →
+                    </a>
+
+                    <button class="btn btn-secundario"
+                            onclick="cerrarDetalle()">
+                        VOLVER AL CATÁLOGO
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto" class="contacto">
+
+    <div class="titulo">
+        <h2>¿Buscas <span>barrenos mineros?</span></h2>
+        <p>
+            Escríbenos para consultar precios, disponibilidad
+            y especificaciones de nuestros productos.
+        </p>
+    </div>
+
+    <p><strong>EMPRESA ALEXMIN</strong></p>
+    <p>Cochabamba, Bolivia</p>
+    <p>Av. Albina Patiño, km 15</p>
+
+    <a
+        href="https://wa.me/59175999085?text=Hola%2C%20ALEXMIN.%20Quisiera%20informaci%C3%B3n%20sobre%20sus%20barrenos%20mineros."
+        class="boton-whatsapp"
+        target="_blank"
+        rel="noopener noreferrer">
+        ✆ ESCRÍBENOS POR WHATSAPP
+    </a>
+
+    <p>
+        <a href="index.html"
+           style="color:#e5a928;text-decoration:none;display:inline-block;margin-top:25px;">
+            ← VOLVER A LA PÁGINA PRINCIPAL
+        </a>
+    </p>
+
+</section>
+
+<!-- WHATSAPP FLOTANTE -->
+<a
+    href="https://wa.me/59175999085?text=Hola%2C%20ALEXMIN.%20Quisiera%20informaci%C3%B3n%20sobre%20sus%20productos%20mineros."
+    class="whatsapp-flotante"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Contactar a ALEXMIN por WhatsApp"
+    title="Escríbenos por WhatsApp">
+    ☎
+</a>
+
+<!-- PIE DE PÁGINA -->
+<footer>
+    © 2026 <span>EMPRESA ALEXMIN</span>.
+    Maquinaria, herramientas y soluciones para minería.
+</footer>
+<script>
+function mostrarEquipo(indice) {
+    const equipo = equipos[indice];
+
+    if (!equipo) return;
+
+    document.getElementById("detalle-titulo").textContent =
+        equipo.nombre;
+
+    document.getElementById("detalle-imagen").src =
+        equipo.imagen;
+
+    document.getElementById("detalle-descripcion").textContent =
+        equipo.descripcion;
+
+    document.getElementById("detalle-aplicaciones").textContent =
+        equipo.aplicaciones;
+
+    const mensaje = "Hola, ALEXMIN. Quisiera información sobre " +
+        equipo.nombre + ", disponibilidad y precio.";
+
+    document.getElementById("consulta").href =
+        "https://wa.me/" + WHATSAPP +
+        "?text=" + encodeURIComponent(mensaje);
+
+    document.getElementById("detalle").style.display = "block";
+
+    document.getElementById("detalle").scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+}
+
+function cerrarDetalle() {
+    document.getElementById("detalle").style.display = "none";
+
+    document.getElementById("catalogo").scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+}
+</script>
+
+</body>
+</html>

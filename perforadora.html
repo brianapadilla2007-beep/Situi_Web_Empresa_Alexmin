@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#101211">
+<meta name="description" content="Conoce las perforadoras, rotomartillos y equipos para minería de ALEXMIN, Cochabamba, Bolivia.">
+<title>Perforadoras y equipos | ALEXMIN</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+:root {
+    --negro: #101211;
+    --dorado: #e5a928;
+    --gris: #222724;
+    --blanco: #f5f5f5;
+    --verde: #25D366;
+}
+
+html {
+    scroll-padding-top: 120px;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--negro);
+    color: var(--blanco);
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
+}
+
+header {
+    background: rgba(12, 14, 13, .98);
+    padding: 16px 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    border-bottom: 1px solid #42371f;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    color: var(--dorado);
+    font-size: 23px;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 7px 0;
+    transition: color .3s;
+}
+
+nav a:hover {
+    color: var(--dorado);
+}
+
+section {
+    padding: 65px 8%;
+    scroll-margin-top: 115px;
+}
+
+.hero {
+    min-height: 48vh;
+    min-height: 48svh;
+    display: flex;
+    align-items: center;
+    padding: 65px 8%;
+    background:
+        linear-gradient(90deg, rgba(16,18,17,.95),
+        rgba(16,18,17,.57)),
+        url('https://images.unsplash.com/photo-1580901368919-7738efb0f87e?auto=format&fit=crop&w=1600&q=85')
+        center / cover no-repeat;
+}
+
+.hero-content {
+    max-width: 700px;
+}
+
+.etiqueta {
+    color: var(--dorado);
+    letter-spacing: 3px;
+    font-size: 13px;
+    font-weight: bold;
+    line-height: 1.8;
+}
+
+h1 {
+    font-size: clamp(35px, 5.5vw, 60px);
+    line-height: 1.15;
+    margin: 20px 0;
+}
+
+h1 span,
+.titulo span {
+    color: var(--dorado);
+}
+
+.hero p {
+    color: #ddd;
+    line-height: 1.8;
+    margin-bottom: 25px;
+    font-size: 16px;
+}
+
+.btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 9px;
+    background: var(--dorado);
+    color: #111;
+    text-decoration: none;
+    padding: 14px 21px;
+    font-size: 14px;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    text-align: center;
+    transition: .3s;
+}
+
+.btn:hover {
+    background: white;
+    transform: translateY(-2px);
+}
+
+.titulo {
+    text-align: center;
+    margin-bottom: 38px;
+}
+
+.titulo h2 {
+    font-size: clamp(28px, 4vw, 36px);
+    line-height: 1.3;
+    margin-bottom: 12px;
+}
+
+.titulo p {
+    color: #aaa;
+    line-height: 1.8;
+}
+
+.catalogo {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+}
+
+.producto {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    background: var(--gris);
+    border: 1px solid #383e39;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform .3s, border-color .3s;
+}
+
+.producto:hover {
+    transform: translateY(-5px);
+    border-color: var(--dorado);
+    box-shadow: 0 10px 30px #0008;
+}
+
+.producto img {
+    display: block;
+    width: 100%;
+    height: 215px;
+    object-fit: cover;
+    background: #1c211f;
+}
+
+.producto-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex: 1;
+    padding: 21px;
+}
+
+.producto h3 {
+    color: var(--dorado);
+    font-size: 21px;
+    line-height: 1.4;
+    margin-bottom: 12px;
+}
+
+.producto p {
+    color: #ccc;
+    font-size: 14px;
+    line-height: 1.8;
+    margin-bottom: 18px;
+}
+
+.consultar-equipo {
+    margin-top: auto;
+    background: var(--verde);
+    color: white;
+    text-decoration: none;
+    padding: 12px 15px;
+    border-radius: 7px;
+    font-size: 13px;
+    font-weight: bold;
+    line-height: 1.4;
+    transition: .3s;
+}
+
+.consultar-equipo:hover {
+    background: #1ebe5d;
+}
+
+#detalle {
+    display: none;
+    margin-top: 35px;
+    padding: 28px;
+    background: var(--gris);
+    border: 1px solid var(--dorado);
+    border-radius: 12px;
+    scroll-margin-top: 120px;
+}
+
+#detalle h3 {
+    color: var(--dorado);
+    font-size: 28px;
+    line-height: 1.3;
+    margin-bottom: 15px;
+}
+
+#detalle img {
+    display: block;
+    width: 100%;
+    max-width: 650px;
+    max-height: 360px;
+    object-fit: cover;
+    border-radius: 9px;
+    margin: 20px 0;
+}
+
+#detalle p {
+    color: #ddd;
+    line-height: 1.8;
+    margin: 12px 0;
+}
+
+.acciones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 22px;
+}
+
+.contacto {
+    text-align: center;
+    background: linear-gradient(135deg, #242017, #101211);
+}
+
+.contacto .titulo {
+    margin-bottom: 25px;
+}
+
+.contacto-info {
+    max-width: 650px;
+    margin: 0 auto 28px;
+}
+
+.contacto-info p {
+    color: #ddd;
+    line-height: 1.9;
+    overflow-wrap: anywhere;
+}
+
+.contacto-info a {
+    color: var(--dorado);
+    text-decoration: none;
+}
+
+.whatsapp-caja {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 30px 22px;
+    border: 1px solid #383e39;
+    border-radius: 14px;
+    background: #1c211f;
+}
+
+.whatsapp-caja h3 {
+    color: var(--dorado);
+    font-size: 24px;
+    margin-bottom: 12px;
+}
+
+.whatsapp-caja p {
+    color: #ddd;
+    line-height: 1.8;
+    margin-bottom: 10px;
+}
+
+.boton-whatsapp {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 15px;
+    padding: 15px 22px;
+    background: var(--verde);
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    line-height: 1.4;
+    transition: .3s;
+}
+
+.boton-whatsapp:hover {
+    background: #1ebe5d;
+    transform: translateY(-2px);
+}
+
+/* BOTÓN FLOTANTE */
+.whatsapp-float {
+    position: fixed;
+    right: 22px;
+    bottom: 22px;
+    width: 62px;
+    height: 62px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--verde);
+    color: white;
+    text-decoration: none;
+    box-shadow: 0 4px 18px rgba(0,0,0,.45);
+    z-index: 99999;
+    transition: transform .25s, background .25s;
+}
+
+.whatsapp-float:hover {
+    background: #1ebe5d;
+    transform: scale(1.08);
+}
+
+.whatsapp-float svg {
+    width: 34px;
+    height: 34px;
+    fill: currentColor;
+    display: block;
+}
+
+.volver {
+    display: inline-block;
+    color: var(--dorado);
+    text-decoration: none;
+    margin-top: 25px;
+    font-weight: bold;
+}
+
+footer {
+    text-align: center;
+    padding: 25px 18px;
+    color: #aaa;
+    background: #080908;
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+/* TABLETS */
+@media (max-width: 900px) {
+    header {
+        justify-content: center;
+        padding: 15px 4%;
+    }
+
+    nav {
+        gap: 16px;
+    }
+
+    section {
+        padding: 55px 5%;
+    }
+
+    .catalogo {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+    }
+}
+
+/* CELULARES */
+@media (max-width: 600px) {
+    html {
+        scroll-padding-top: 145px;
+    }
+
+    header {
+        flex-direction: column;
+        gap: 9px;
+        padding: 12px 10px;
+    }
+
+    .logo {
+        font-size: 20px;
+        letter-spacing: 1px;
+        text-align: center;
+    }
+
+    nav {
+        width: 100%;
+        justify-content: center;
+        gap: 5px 15px;
+    }
+
+    nav a {
+        font-size: 13px;
+        padding: 5px 0;
+    }
+
+    section {
+        padding: 45px 17px;
+        scroll-margin-top: 145px;
+    }
+
+    .hero {
+        min-height: 48svh;
+        padding: 55px 20px;
+        background-position: center;
+    }
+
+    .etiqueta {
+        font-size: 11px;
+        letter-spacing: 2px;
+    }
+
+    h1 {
+        font-size: clamp(33px, 9vw, 46px);
+        margin: 18px 0;
+    }
+
+    .hero p {
+        font-size: 15px;
+        line-height: 1.8;
+    }
+
+    .btn {
+        width: 100%;
+        padding: 14px 12px;
+        font-size: 13px;
+    }
+
+    .titulo {
+        margin-bottom: 28px;
+    }
+
+    .titulo h2 {
+        font-size: 28px;
+    }
+
+    .titulo p {
+        font-size: 14px;
+    }
+
+    .catalogo {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 20px;
+    }
+
+    .producto img {
+        height: 225px;
+    }
+
+    .producto-info {
+        padding: 20px;
+    }
+
+    .producto h3 {
+        font-size: 20px;
+    }
+
+    .producto p {
+        font-size: 14px;
+    }
+
+    .consultar-equipo {
+        width: 100%;
+        text-align: center;
+        padding: 14px 10px;
+    }
+
+    #detalle {
+        padding: 20px 16px;
+    }
+
+    #detalle h3 {
+        font-size: 24px;
+    }
+
+    .acciones {
+        flex-direction: column;
+    }
+
+    .contacto-info p {
+        font-size: 14px;
+    }
+
+    .whatsapp-caja {
+        padding: 24px 15px;
+    }
+
+    .whatsapp-caja h3 {
+        font-size: 21px;
+    }
+
+    .boton-whatsapp {
+        width: 100%;
+        padding: 15px 10px;
+        font-size: 13px;
+    }
+
+    .whatsapp-float {
+        width: 56px;
+        height: 56px;
+        right: 14px;
+        bottom: 15px;
+    }
+
+    .whatsapp-float svg {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+@media (max-width: 360px) {
+    .logo {
+        font-size: 18px;
+    }
+
+    nav {
+        gap: 8px 11px;
+    }
+
+    nav a {
+        font-size: 12px;
+    }
+
+    .producto img {
+        height: 190px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">⛏ EMPRESA ALEXMIN</div>
+
+    <nav aria-label="Menú principal">
+        <a href="index.html">Inicio</a>
+        <a href="#catalogo">Perforadoras</a>
+        <a href="#contacto">Contacto</a>
+    </nav>
+</header>
+
+<main>
+
+<!-- PORTADA -->
+<section class="hero" id="inicio">
+    <div class="hero-content">
+        <span class="etiqueta">EQUIPOS PARA MINERÍA</span>
+
+        <h1>Perforadoras <span>mineras</span></h1>
+
+        <p>
+            Descubre nuestros equipos de perforación, rotomartillos
+            y componentes para minería. Consulta por disponibilidad,
+            características y compatibilidad de cada equipo.
+        </p>
+
+        <a href="#catalogo" class="btn">
+            EXPLORAR EQUIPOS ↓
+        </a>
+    </div>
+</section>
+
+<!-- CATÁLOGO -->
+<section id="catalogo">
+
+    <div class="titulo">
+        <h2>Equipos para <span>minería</span></h2>
+        <p>Conoce nuestros equipos y solicita información directamente.</p>
+    </div>
+
+    <div class="catalogo">
+
+        <article class="producto">
+            <img src="yt27.perforadora.jpg"
+                 alt="Perforadora neumática YT27"
+                 loading="lazy">
+
+            <div class="producto-info">
+                <h3>Perforadora YT27</h3>
+
+                <p>
+                    Perforadora neumática para trabajos de minería
+                    y perforación en roca. Diseñada para operaciones
+                    exigentes, su rendimiento depende de las condiciones
+                    de trabajo y el mantenimiento.
+                </p>
+        </article>
+
+        <article class="producto">
+            <img src="maquina.bosch.jpg"
+                 alt="Rotomartillo Bosch"
+                 loading="lazy">
+
+            <div class="producto-info">
+                <h3>Rotomartillo Bosch</h3>
+
+                <p>
+                    Herramienta para perforación y trabajos de
+                    mantenimiento. El modelo específico determina
+                    sus características, capacidad y aplicaciones.
+                </p>
+        </article>
+
+        <article class="producto">
+            <img src="makita.maquina.jpg"
+                 alt="Rotomartillo Makita"
+                 loading="lazy">
+
+            <div class="producto-info">
+                <h3>Rotomartillo Makita</h3>
+
+                <p>
+                    Herramienta para perforación en materiales
+                    compatibles con cada modelo. Consulta por
+                    especificaciones y disponibilidad.
+                </p>
+            </div>
+        </article>
+
+        <article class="producto">
+            <img src="piston.avance.avif"
+                 alt="Pistón de avance para perforación"
+                 loading="lazy">
+
+            <div class="producto-info">
+                <h3>Pistón de avance</h3>
+
+                <p>
+                    Componente empleado en determinados sistemas
+                    de perforación. La compatibilidad debe verificarse
+                    según el equipo y sus especificaciones técnicas.
+                </p>
+            </div>
+        </article>
+
+        <article class="producto">
+            <img src="Maquin.yt18.jpg"
+                 alt="Perforadora neumática YT18"
+                 loading="lazy">
+
+            <div class="producto-info">
+                <h3>Máquina YT18</h3>
+
+                <p>
+                    Perforadora neumática utilizada en determinados
+                    trabajos de minería y perforación en roca.
+                    Consulta las especificaciones del equipo.
+                </p>
+            </div>
+        </article>
+
+    </div>
+
+</section>
+
+<!-- CONTACTO -->
+<section class="contacto" id="contacto">
+
+    <div class="titulo">
+        <h2>¿Necesitas un <span>equipo minero?</span></h2>
+
+        <p>
+            Estamos listos para ayudarte a consultar por perforadoras,
+            rotomartillos, repuestos y accesorios.
+        </p>
+    </div>
+
+    <div class="contacto-info">
+        <p>
+            <strong>Empresa:</strong> ALEXMIN
+        </p>
+
+        <p>
+            <strong>Correo:</strong>
+            <a href="mailto:empresa.alexmin01@gmail.com"
+               style="color:#e5a928">
+                empresa.alexmin01@gmail.com
+            </a>
+        </p>
+
+        <p>
+            <strong>Teléfono:</strong>
+            <a href="tel:+59175999085"
+               style="color:#e5a928">
+                +591 75999085
+            </a>
+        </p>
+
+        <p>
+            <strong>Ubicación:</strong>
+            Av. Simón I. Patiño, Km 15/5, Cochabamba, Bolivia.
+        </p>
+    </div>
+
+    <div class="whatsapp-caja">
+        <h3>¡Hablemos por WhatsApp!</h3>
+
+        <p>
+            Solicita información sobre precios, disponibilidad
+            y características de nuestros equipos.
+        </p>
+
+        <a class="boton-whatsapp"
+           href="https://wa.me/59175999085?text=Hola%2C%20ALEXMIN.%20Quisiera%20informaci%C3%B3n%20sobre%20sus%20perforadoras%20y%20equipos%20mineros."
+           target="_blank"
+           rel="noopener noreferrer">
+
+            <svg width="24" height="24" viewBox="0 0 24 24"
+                 fill="currentColor" aria-hidden="true">
+                <path d="M20.52 3.48A11.8 11.8 0 0 0 12.06 0C5.5 0 .16 5.34.16 11.9c0 2.1.55 4.15 1.6 5.96L.06 24l6.3-1.65a11.9 11.9 0 0 0 5.7 1.45h.01c6.56 0 11.9-5.34 11.9-11.9a11.8 11.8 0 0 0-3.45-8.42ZM12.06 21.8a9.9 9.9 0 0 1-5.04-1.38l-.36-.21-3.74.98 1-3.65-.23-.38a9.85 9.85 0 1 1 8.37 4.64Zm5.42-7.39c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.47-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.49s1.07 2.89 1.22 3.09c.15.2 2.1 3.21 5.09 4.5.71.31 1.27.49 1.7.63.71.23 1.36.2 1.87.12.57-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.13-.27-.2-.57-.35Z"/>
+            </svg>
+
+            CONSULTAR POR WHATSAPP
+        </a>
+    </div>
+
+    <a href="index.html" class="volver">
+        ← VOLVER A LA PÁGINA PRINCIPAL
+    </a>
+
+</section>
+
+</main>
+
+<!-- BOTÓN FLOTANTE DE WHATSAPP -->
+<a
+    class="whatsapp-float"
+    href="https://wa.me/59175999085?text=Hola%2C%20ALEXMIN.%20Quisiera%20informaci%C3%B3n%20sobre%20sus%20productos%20mineros."
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Contactar a ALEXMIN por WhatsApp"
+    title="Escríbenos por WhatsApp">
+
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M20.52 3.48A11.8 11.8 0 0 0 12.06 0C5.5 0 .16 5.34.16 11.9c0 2.1.55 4.15 1.6 5.96L.06 24l6.3-1.65a11.9 11.9 0 0 0 5.7 1.45h.01c6.56 0 11.9-5.34 11.9-11.9a11.8 11.8 0 0 0-3.45-8.42ZM12.06 21.8a9.9 9.9 0 0 1-5.04-1.38l-.36-.21-3.74.98 1-3.65-.23-.38a9.85 9.85 0 1 1 8.37 4.64Zm5.42-7.39c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.47-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.49s1.07 2.89 1.22 3.09c.15.2 2.1 3.21 5.09 4.5.71.31 1.27.49 1.7.63.71.23 1.36.2 1.87.12.57-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.13-.27-.2-.57-.35Z"/>
+    </svg>
+</a>
+
+<footer>
+    © 2026 ALEXMIN | Maquinaria, herramientas y repuestos para minería.
+    <br>
+    Cochabamba, Bolivia.
+</footer>
+
+</body>
+</html>
