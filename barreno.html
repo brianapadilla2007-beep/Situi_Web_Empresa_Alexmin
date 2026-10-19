@@ -22,10 +22,25 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
-    background: var(--negro);
+    font-family: Arial, Helvetica, sans-serif;
+
+    background-image:
+        linear-gradient(
+            rgba(16, 18, 17, 0.25),
+            rgba(16, 18, 17, 0.25)
+        ),
+        url("fondo negro.png");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    background-color: var(--negro);
     color: var(--blanco);
+    overflow-x: hidden;
 }
+
 
 /* BARRA DE NAVEGACIÓN */
 header {
@@ -312,133 +327,365 @@ section {
 }
 
 /* CONTACTO */
+
+
 .contacto {
     text-align: center;
-    background: linear-gradient(135deg, #292317, #101211);
+
+    background-image:
+        linear-gradient(
+            rgba(16, 18, 17, 0.10),
+            rgba(16, 18, 17, 0.10)
+        ),
+        url("");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    padding: 65px 8%;
 }
 
-.contacto .titulo {
-    margin-bottom: 25px;
+
+.contacto-info {
+    margin: 0 auto 28px;
+    max-width: 650px;
 }
 
-.contacto p {
+.contacto-info p {
     color: #ddd;
     line-height: 1.9;
-    margin: 12px auto;
+    overflow-wrap: anywhere;
+}
+
+.contacto-info a {
+    color: var(--dorado);
+    text-decoration: none;
+}
+
+.contacto-info a:hover {
+    text-decoration: underline;
+}
+
+.whatsapp-seccion {
+    max-width: 600px;
+    margin: 25px auto 0;
+    padding: 30px 22px;
+    background: transparent;
+    border: none;
+    border-radius: 14px;
+}
+
+.whatsapp-seccion h3 {
+    color: var(--dorado);
+    font-size: 24px;
+    margin-bottom: 12px;
+}
+
+.whatsapp-seccion p {
+    color: #ddd;
+    line-height: 1.8;
+    margin-bottom: 10px;
 }
 
 .boton-whatsapp {
-    display: inline-block;
-    background: #25D366;
-    color: white;
-    padding: 15px 25px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: var(--verde);
+    color: #fff;
+    padding: 15px 24px;
     margin-top: 15px;
-    border-radius: 7px;
+    border-radius: 8px;
     text-decoration: none;
     font-weight: bold;
-    transition: .3s;
+    transition: background .3s, transform .3s;
 }
 
 .boton-whatsapp:hover {
-    background: #128C7E;
-    transform: translateY(-3px);
+    background: #1ebe5d;
+    transform: translateY(-2px);
 }
 
-/* WHATSAPP FLOTANTE */
-.whatsapp-flotante {
+/* ===== BOTÓN FLOTANTE DE WHATSAPP ===== */
+.whatsapp-float {
     position: fixed;
-    bottom: 23px;
-    right: 23px;
-    width: 58px;
-    height: 58px;
-    background: #25D366;
-    color: white;
+    right: 22px;
+    bottom: 22px;
+    width: 62px;
+    height: 62px;
+    background: var(--verde);
+    color: #fff;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
     text-decoration: none;
-    font-size: 30px;
-    box-shadow: 0 4px 15px #0008;
-    z-index: 999;
-    transition: .3s;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, .45);
+    z-index: 99999;
+    transition: transform .25s, background .25s;
+    -webkit-tap-highlight-color: transparent;
 }
 
-.whatsapp-flotante:hover {
-    background: #128C7E;
-    transform: scale(1.1);
+.whatsapp-float:hover {
+    background: #1ebe5d;
+    transform: scale(1.09);
 }
 
-/* PIE DE PÁGINA */
+.whatsapp-float svg {
+    width: 34px;
+    height: 34px;
+    display: block;
+    fill: currentColor;
+}
+
+/* ===== PIE DE PÁGINA ===== */
 footer {
     text-align: center;
-    padding: 28px 15px;
+    padding: 27px 20px;
     color: #aaa;
     background: #080908;
     font-size: 13px;
     line-height: 1.8;
 }
 
-footer span {
-    color: var(--dorado);
+/* ===== TABLET ===== */
+@media (max-width: 900px) {
+    header {
+        padding: 15px 4%;
+        justify-content: center;
+    }
+
+    nav {
+        gap: 18px;
+    }
+
+    section {
+        padding: 65px 5%;
+    }
+
+    .catalogo {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+    }
+
+    .nosotros {
+        gap: 28px;
+    }
+
+    .producto img {
+        height: 200px;
+    }
 }
 
-/* CELULARES Y TABLETS */
-@media (max-width: 700px) {
+/* ===== CELULARES ===== */
+@media (max-width: 600px) {
+    html {
+        scroll-padding-top: 145px;
+    }
+
     header {
-        justify-content: center;
-        padding: 17px 5%;
+        position: sticky;
+        top: 0;
+        padding: 12px 12px;
+        gap: 10px;
+        flex-direction: column;
     }
 
     .logo {
         font-size: 20px;
+        letter-spacing: 1px;
         text-align: center;
     }
 
     nav {
+        width: 100%;
+        display: flex;
         justify-content: center;
-        gap: 15px;
+        gap: 5px 16px;
     }
 
     nav a {
-        font-size: 14px;
+        font-size: 13px;
+        padding: 5px 0;
     }
 
     .hero {
-        min-height: 420px;
-        padding: 60px 6%;
+        min-height: 72svh;
+        padding: 65px 22px;
         background-position: center;
     }
 
+    .hero-content {
+        width: 100%;
+    }
+
+    .etiqueta {
+        font-size: 11px;
+        letter-spacing: 2px;
+    }
+
+    h1 {
+        font-size: clamp(34px, 9vw, 48px);
+        margin: 20px 0;
+    }
+
+    .hero p {
+        font-size: 15px;
+        line-height: 1.8;
+    }
+
+    .btn {
+        padding: 14px 17px;
+        font-size: 13px;
+        max-width: 100%;
+    }
+
     section {
-        padding: 55px 6%;
+        padding: 48px 18px;
+        scroll-margin-top: 145px;
+    }
+
+    .titulo {
+        margin-bottom: 28px;
+    }
+
+    .titulo h2 {
+        font-size: 28px;
+    }
+
+    .titulo p {
+        font-size: 14px;
     }
 
     .catalogo {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 20px;
+    }
+
+    .producto {
+        width: 100%;
     }
 
     .producto img {
-        height: 230px;
+        height: 225px;
     }
 
-    .detalle-contenido {
-        grid-template-columns: 1fr;
-    }
-
-    #detalle {
+    .producto-info {
         padding: 20px;
     }
 
-    #detalle h3 {
-        font-size: 24px;
+    .producto h3 {
+        font-size: 20px;
     }
 
-    .whatsapp-flotante {
-        width: 53px;
-        height: 53px;
+    .producto p {
+        font-size: 14px;
+        line-height: 1.8;
+    }
+
+    .nosotros {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 25px;
+    }
+
+    .nosotros img {
+        max-height: 300px;
+    }
+
+    .nosotros h2 {
+        font-size: 29px;
+    }
+
+    .nosotros p {
+        font-size: 14px;
+        line-height: 1.85;
+    }
+
+    .servicio {
+        padding: 23px 20px;
+    }
+
+    .servicio h3 {
+        font-size: 18px;
+    }
+
+    .servicio p {
+        font-size: 14px;
+    }
+
+    .contacto-info p {
+        font-size: 14px;
+    }
+
+    .whatsapp-seccion {
+        padding: 25px 16px;
+    }
+
+    .whatsapp-seccion h3 {
+        font-size: 21px;
+    }
+
+    .boton-whatsapp {
+        width: 100%;
+        padding: 15px 12px;
+        font-size: 14px;
+    }
+
+    .whatsapp-float {
+        width: 56px;
+        height: 56px;
         right: 15px;
-        bottom: 15px;
+        bottom: 16px;
+    }
+
+    .whatsapp-float svg {
+        width: 30px;
+        height: 30px;
+    }
+
+    footer {
+        padding: 23px 18px;
+        font-size: 12px;
+    }
+}
+
+/* ===== CELULARES MUY PEQUEÑOS ===== */
+@media (max-width: 360px) {
+    .logo {
+        font-size: 18px;
+    }
+
+    nav {
+        gap: 8px 12px;
+    }
+
+    nav a {
+        font-size: 12px;
+    }
+
+    .hero {
+        padding: 50px 17px;
+    }
+
+    section {
+        padding-left: 14px;
+        padding-right: 14px;
+    }
+
+    .producto img {
+        height: 190px;
+    }
+}
+
+/* RESPETA LA CONFIGURACIÓN DE MOVIMIENTO DEL USUARIO */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
     }
 }
 </style>
@@ -452,8 +699,7 @@ footer span {
 
     <nav>
         <a href="index.html">Inicio</a>
-        <a href="#catalogo">Barrenos</a>
-        <a href="#servicios">Servicios</a>
+        <a href="#catalogo">Barrenos</a>    
         <a href="#contacto">Contacto</a>
     </nav>
 </header>
@@ -526,7 +772,7 @@ footer span {
 
         <article class="producto">
             <img
-                src=" "
+                src="barreno 1.20.jpeg"
                 alt="Trabajo de perforación"
                 loading="lazy">
 
@@ -542,7 +788,7 @@ footer span {
 
         <article class="producto">
             <img
-                src=" "
+                src="bareeno 1.80.jpeg"
                 alt="Equipo industrial de minería"
                 loading="lazy">
 
@@ -558,7 +804,7 @@ footer span {
 
         <article class="producto">
             <img
-                src=" "
+                src="barreno 0.80 dia.jpeg"
                 alt="Herramientas y equipos técnicos"
                 loading="lazy">
 
@@ -631,46 +877,82 @@ footer span {
 </section>
 
 <!-- CONTACTO -->
-<section id="contacto" class="contacto">
+<!-- ===== CONTACTO ===== -->
+<section class="contacto" id="contacto">
 
     <div class="titulo">
-        <h2>¿Buscas <span>barrenos mineros?</span></h2>
+        <h2>¿Buscas un <span>proveedor minero?</span></h2>
+
         <p>
-            Escríbenos para consultar precios, disponibilidad
-            y especificaciones de nuestros productos.
+            Contáctanos para solicitar información sobre
+            nuestros productos y servicios.
         </p>
     </div>
 
-    <p><strong>EMPRESA ALEXMIN</strong></p>
-    <p>Cochabamba, Bolivia</p>
-    <p>Av. Albina Patiño, km 15</p>
+    <div class="contacto-info">
+        <p>
+            <strong>Correo:</strong>
+            <a href="mailto:empresa.alexmin01@gmail.com">
+                empresa.alexmin01@gmail.com
+            </a>
+        </p>
 
-    <a
-        href="https://wa.me/59175999085?text=Hola%2C%20ALEXMIN.%20Quisiera%20informaci%C3%B3n%20sobre%20sus%20barrenos%20mineros."
-        class="boton-whatsapp"
-        target="_blank"
-        rel="noopener noreferrer">
-        ✆ ESCRÍBENOS POR WHATSAPP
-    </a>
+        <p>
+            <strong>Teléfono:</strong>
+            <a href="tel:+59175999085">+591 75999085</a>
+        </p>
 
-    <p>
-        <a href="index.html"
-           style="color:#e5a928;text-decoration:none;display:inline-block;margin-top:25px;">
-            ← VOLVER A LA PÁGINA PRINCIPAL
+        <p>
+            <strong>Ubicación:</strong>
+            Av. Albina Patiño, Km 15,
+            Cochabamba, Bolivia.
+        </p>
+    </div>
+
+    <div class="whatsapp-seccion">
+        <h3>Contáctanos por WhatsApp</h3>
+
+        <p>
+            ¿Necesitas maquinaria o repuestos para minería?
+        </p>
+
+        <p>Estamos listos para atenderte.</p>
+
+        <a
+            href="https://wa.me/59175999085?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20sus%20productos%20mineros."
+            target="_blank"
+            rel="noopener noreferrer"
+            class="boton-whatsapp">
+
+            <svg width="23" height="23"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                aria-hidden="true">
+                <path d="M20.52 3.48A11.8 11.8 0 0 0 12.06 0C5.5 0 .16 5.34.16 11.9c0 2.1.55 4.15 1.6 5.96L.06 24l6.3-1.65a11.9 11.9 0 0 0 5.7 1.45h.01c6.56 0 11.9-5.34 11.9-11.9a11.8 11.8 0 0 0-3.45-8.42ZM12.06 21.8a9.9 9.9 0 0 1-5.04-1.38l-.36-.21-3.74.98 1-3.65-.23-.38a9.85 9.85 0 1 1 8.37 4.64Zm5.42-7.39c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.47-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.49s1.07 2.89 1.22 3.09c.15.2 2.1 3.21 5.09 4.5.71.31 1.27.49 1.7.63.71.23 1.36.2 1.87.12.57-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.13-.27-.2-.57-.35Z"/>
+            </svg>
+
+            ESCRÍBENOS POR WHATSAPP
         </a>
-    </p>
+    </div>
 
 </section>
 
-<!-- WHATSAPP FLOTANTE -->
+</main>
+
+<!-- ===== BOTÓN FLOTANTE SIEMPRE VISIBLE ===== -->
 <a
-    href="https://wa.me/59175999085?text=Hola%2C%20ALEXMIN.%20Quisiera%20informaci%C3%B3n%20sobre%20sus%20productos%20mineros."
-    class="whatsapp-flotante"
+    href="https://wa.me/59175999085?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20sus%20productos%20mineros."
+    class="whatsapp-float"
     target="_blank"
     rel="noopener noreferrer"
-    aria-label="Contactar a ALEXMIN por WhatsApp"
+    aria-label="Contactar con ALEXMIN por WhatsApp"
     title="Escríbenos por WhatsApp">
-    ☎
+
+    <svg
+        viewBox="0 0 24 24"
+        aria-hidden="true">
+        <path d="M20.52 3.48A11.8 11.8 0 0 0 12.06 0C5.5 0 .16 5.34.16 11.9c0 2.1.55 4.15 1.6 5.96L.06 24l6.3-1.65a11.9 11.9 0 0 0 5.7 1.45h.01c6.56 0 11.9-5.34 11.9-11.9a11.8 11.8 0 0 0-3.45-8.42ZM12.06 21.8a9.9 9.9 0 0 1-5.04-1.38l-.36-.21-3.74.98 1-3.65-.23-.38a9.85 9.85 0 1 1 8.37 4.64Zm5.42-7.39c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.47-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.49s1.07 2.89 1.22 3.09c.15.2 2.1 3.21 5.09 4.5.71.31 1.27.49 1.7.63.71.23 1.36.2 1.87.12.57-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.13-.27-.2-.57-.35Z"/>
+    </svg>
 </a>
 
 <!-- PIE DE PÁGINA -->

@@ -28,10 +28,22 @@
 html {
     scroll-padding-top: 100px;
 }
-
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background: var(--negro);
+
+    background-image:
+        linear-gradient(
+            rgba(16, 18, 17, 0.25),
+            rgba(16, 18, 17, 0.25)
+        ),
+        url("fondo negro.png");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    background-color: var(--negro);
     color: var(--blanco);
     overflow-x: hidden;
 }
@@ -183,7 +195,7 @@ section {
 /* ===== CATÁLOGO DE PRODUCTOS ===== */
 .productos,
 .servicios {
-    background: #151816;
+    background: transparent;
 }
 
 .catalogo {
@@ -277,7 +289,7 @@ section {
     border-radius: 10px;
     transition: transform .3s, border-color .3s;
     min-width: 0;
-}
+} 
 
 .servicio:hover {
     transform: translateY(-5px);
@@ -297,10 +309,24 @@ section {
 }
 
 /* ===== CONTACTO ===== */
+
 .contacto {
     text-align: center;
-    background: linear-gradient(135deg, #242017, #101211);
+
+    background-image:
+        linear-gradient(
+            rgba(16, 18, 17, 0.10),
+            rgba(16, 18, 17, 0.10)
+        ),
+        url("");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    padding: 65px 8%;
 }
+
 
 .contacto-info {
     margin: 0 auto 28px;
@@ -326,8 +352,8 @@ section {
     max-width: 600px;
     margin: 25px auto 0;
     padding: 30px 22px;
-    background: #1c211f;
-    border: 1px solid #383e39;
+    background: transparent;
+    border: none;
     border-radius: 14px;
 }
 
@@ -767,50 +793,6 @@ footer {
         </article>
 
     </div>
-
-  <article class="producto"
-            onclick="window.location.href='repuestos.html'">
-
-            <img
-                src="Barreno_para_mina.jpg"
-                alt="INSUMOS PARA MINERIA"
-                loading="lazy">
-
-            <div class="producto-info">
-                <h3>INSUMOS</h3>
-
-                <p>
-                    Disponemos de repuestos para maquinaria minera,
-                    con alternativas orientadas a la durabilidad,
-                    el mantenimiento eficiente y el funcionamiento
-                    confiable de los equipos.
-                </p>
-
-                <span class="ver-mas">Ver repuestos →</span>
-            </div>
-        </article>
-    </div>
-    <article class="producto"
-            onclick="window.location.href='repuestos.html'">
-
-            <img
-                src=" "
-                alt="INSUMOS PARA MINERIA"
-                loading="lazy">
-
-            <div class="producto-info">
-                <h3>PP</h3>
-
-                <p>
-                    Disponemos de repuestos para maquinaria minera,
-                    con alternativas orientadas a la durabilidad,
-                    el mantenimiento eficiente y el funcionamiento
-                    confiable de los equipos.
-                </p>
-
-                <span class="ver-mas">Ver repuestos →</span>
-            </div>
-        </article>
 </section>
 <!-- ===== NOSOTROS ===== -->
 <section id="nosotros">
@@ -920,7 +902,7 @@ footer {
 
         <p>
             <strong>Ubicación:</strong>
-            Av. Simón I. Patiño, Km 15/5,
+            Av. Albina Patiño, Km 15,
             Cochabamba, Bolivia.
         </p>
     </div>
